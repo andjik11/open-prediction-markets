@@ -38,6 +38,7 @@ Donations support:
 - Open-source, publicly auditable work
 - Transparency in progress and deliverables
 - No promises of profit; research and forecasting focus
+
 Giveth project:
 https://giveth.io/project/open-prediction-markets
 
