@@ -23,18 +23,66 @@
     a { color: #60a5fa; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 12px 18px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(11,15,25,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      max-width: 1050px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
     /* Hero */
     header {
       position: relative;
       padding: 120px 20px;
       text-align: center;
       overflow: hidden;
-      background: radial-gradient(
-        circle at top,
-        #233876 0%,
-        #1b2a4e 45%,
-        #0b0f19 100%
-      );
+      background: radial-gradient(circle at top, #233876 0%, #1b2a4e 45%, #0b0f19 100%);
     }
 
     header::before {
@@ -42,11 +90,10 @@
       position: absolute;
       inset: -40%;
       background:
-        radial-gradient(circle at 30% 20%, rgba(96,165,250,0.18), transparent 40%),
-        radial-gradient(circle at 70% 30%, rgba(34,197,94,0.14), transparent 45%),
-        radial-gradient(circle at 50% 80%, rgba(99,102,241,0.12), transparent 45%);
-      filter: blur(10px);
-      animation: floatGlow 10s ease-in-out infinite;
+        radial-gradient(circle at 30% 20%, rgba(96,165,250,0.14), transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(34,197,94,0.10), transparent 45%);
+      filter: blur(12px);
+      animation: floatGlow 12s ease-in-out infinite;
       pointer-events: none;
     }
 
@@ -54,22 +101,22 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
       background-size: 28px 28px;
-      opacity: 0.08;
-      mask-image: radial-gradient(circle at center, black 45%, transparent 75%);
-      animation: drift 16s linear infinite;
+      opacity: 0.04;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+      animation: drift 18s linear infinite;
       pointer-events: none;
     }
 
     @keyframes floatGlow {
       0%,100% { transform: translate3d(0,0,0) scale(1); }
-      50% { transform: translate3d(2%, -2%, 0) scale(1.03); }
+      50% { transform: translate3d(2%, -2%, 0) scale(1.02); }
     }
 
     @keyframes drift {
-      0% { transform: translate3d(0,0,0); }
-      100% { transform: translate3d(-28px, -28px, 0); }
+      from { transform: translate3d(0,0,0); }
+      to { transform: translate3d(-28px, -28px, 0); }
     }
 
     .hero-wrap {
@@ -105,24 +152,19 @@
       gap: 10px;
       padding: 14px 22px;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(34,197,94,1), rgba(16,185,129,1));
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #062e16;
       font-weight: 700;
       box-shadow: 0 14px 40px rgba(34,197,94,0.18);
-      transform: translateZ(0);
-      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+      transition: transform 180ms ease, box-shadow 180ms ease;
       animation: rise 1100ms ease-out both;
-      text-decoration: none;
     }
 
     .cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 18px 52px rgba(34,197,94,0.26);
-      filter: brightness(1.03);
       text-decoration: none;
     }
-
-    .cta:active { transform: translateY(0px); }
 
     /* Content */
     section {
@@ -132,22 +174,26 @@
     }
 
     .card {
-      background: rgba(17,24,39,0.55);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(17,24,39,0.50);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 18px;
-      padding: 28px;
+      padding: 32px;
       margin-bottom: 22px;
       box-shadow: 0 18px 60px rgba(0,0,0,0.35);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       transform: translateY(8px);
       opacity: 0;
-      transition: transform 500ms ease, opacity 500ms ease;
+      transition: transform 500ms ease, opacity 500ms ease, box-shadow 300ms ease;
     }
 
     .card.in {
       transform: translateY(0);
       opacity: 1;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 70px rgba(0,0,0,0.45);
     }
 
     .card h2 {
@@ -156,8 +202,9 @@
       letter-spacing: -0.01em;
     }
 
-    .card ul { margin: 0; padding-left: 18px; }
-    .card li { margin: 6px 0; }
+    .card p, .card li {
+      color: rgba(255,255,255,0.88);
+    }
 
     /* Footer */
     footer {
@@ -167,18 +214,28 @@
       font-size: 14px;
     }
 
-    footer a {
-      color: #60a5fa;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 
 <body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#">
+      <img src="logo-mark.png" alt="OPM">
+      Open Prediction Markets
+    </a>
+    <div class="nav-links">
+      <a href="#roadmap">Roadmap</a>
+      <a href="https://github.com/andjik11/open-prediction-markets" target="_blank">GitHub</a>
+      <a href="https://giveth.io/project/open-prediction-markets" target="_blank">Giveth</a>
+    </div>
+  </div>
+</nav>
 
 <header>
   <div class="hero-wrap">
@@ -187,7 +244,7 @@
       Open-source prediction markets for collective intelligence,
       transparent forecasting, and public-good research.
     </p>
-    <a class="cta" href="https://giveth.io/project/open-prediction-markets" target="_blank" rel="noopener noreferrer">
+    <a class="cta" href="https://giveth.io/project/open-prediction-markets" target="_blank">
       Donate on Giveth
     </a>
   </div>
@@ -203,7 +260,7 @@
   </div>
 
   <div class="card">
-    <h2>Roadmap</h2>
+    <h2 id="roadmap">Roadmap</h2>
     <ul>
       <li><strong>Phase 1:</strong> Research & market design</li>
       <li><strong>Phase 2:</strong> MVP smart contracts (testnet)</li>
@@ -223,23 +280,11 @@
 </section>
 
 <footer>
-  <p>
-    © 2026 Open Prediction Markets · Open-source public good
-  </p>
-  <p>
-    <a href="https://github.com/andjik11/open-prediction-markets" target="_blank" rel="noopener noreferrer">
-      GitHub
-    </a>
-    ·
-    <a href="https://giveth.io/project/open-prediction-markets" target="_blank" rel="noopener noreferrer">
-      Giveth
-    </a>
-  </p>
+  © 2026 Open Prediction Markets · Open-source public good
 </footer>
 
 <script>
-  // Reveal cards on scroll
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) e.target.classList.add('in');
     });
